@@ -1,0 +1,94 @@
+﻿<Window x:Class="QuanLyCoiThiTuyenSinh.DangNhap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+        xmlns:gif ="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="WhiteSmoke"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        x:Name="LoginWindows"
+        Title="Đăng nhập" Height="500" Width="350">
+
+    <Grid>
+        <Rectangle Height="280" VerticalAlignment="top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5, 1" StartPoint="0.5, 0">
+                    <GradientStop Color="#FF2281D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Stretch="Fill" Source="Images/iconH.png" Width="50" Height="50" VerticalAlignment="Top" Margin="20"/>
+
+        <Rectangle Width="280" Height="240" Fill="WhiteSmoke" VerticalAlignment="Bottom" Margin="0, 100" RadiusY="30" RadiusX="30">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0, 100">
+            <TextBlock Foreground="Gray" Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" FontSize="18" FontWeight="Black"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
+                         Margin="0, 10"
+                        Width="250"
+                        Height="50"
+                        FontWeight="Black"
+                        HorizontalAlignment="Center"
+                        Text="admin"
+                        Foreground="Black"
+                        x:Name="txtTenDangNhap"
+                        materialDesign:HintAssist.Foreground="Black"
+                        materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Center" FontFamily="Champagne"/>
+
+                <PasswordBox  x:Name="txtMatKhau"
+                            Margin="0, 10"
+                            Width="250"
+                            Height="50"
+                            FontWeight="Black"
+                            Foreground="Black"
+                            materialDesign:HintAssist.Hint="Mật khẩu"
+                            materialDesign:HintAssist.Foreground="Black"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+            </StackPanel>
+        </Grid>
+
+        <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                    Content="LOGIN"
+                    Width="150"
+                Height="30"
+                    Background="#FF2281D1"
+                    FontWeight="Black"
+                    IsDefault="True"
+                    VerticalAlignment="Bottom"
+                    BorderThickness="0"
+                    materialDesign:ButtonAssist.CornerRadius="30"
+                    x:Name="btnDangNhap"
+                    Click="btnDangNhap_Click"
+                    Margin="0, 85"/>
+
+        <Button Content="Click để thoát"
+                Background="Transparent"
+                Foreground="Gray"
+                Width="120"
+                Margin="40"
+                x:Name="btnExit"
+                Click="Close_Dangnhap_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                FontSize="12"
+                BorderBrush="{x:Null}"/>
+    </Grid>
+
+</Window>

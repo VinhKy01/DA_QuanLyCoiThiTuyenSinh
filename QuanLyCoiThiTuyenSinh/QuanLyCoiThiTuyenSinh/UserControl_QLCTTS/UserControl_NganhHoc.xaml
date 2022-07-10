@@ -1,0 +1,198 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_QLCTTS.UserControl_NganhHoc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <materialDesign:TransitioningContent x:Name="tranisitionContenSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                Margin="10">
+                        <materialDesign:Card Width="200"
+                                             Height="40"
+                                             Background="#FE222222"
+                                             UniformCornerRadius="15">
+                            <TextBox  x:Name="txtTimTenNganh"
+                                      TextChanged="txtTimTenNganh_TextChanged"
+                                      materialDesign:HintAssist.Hint="Tìm tên ngành"
+                                      materialDesign:HintAssist.HelperTextFontSize="15" 
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Foreground="White"
+                                      Margin="5 0 0 0"
+                                      Background="Transparent"
+                                      materialDesign:HintAssist.Foreground="#FE222222"
+                                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                      Width="160">
+                            </TextBox>
+                        </materialDesign:Card>
+                        <materialDesign:PackIcon Kind="Magnify" 
+                                                 Foreground="White"
+                                                 Margin="-28 10 0 0"
+                                                 Width="20"
+                                                 Height="20"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                            Margin="10"
+                            x:Name="txtMaNganh"
+                            FontSize="15"
+                            FontWeight ="Bold"
+                            Width="200"
+                            IsEnabled="False"
+                            Foreground="Black"
+                            materialDesign:HintAssist.Hint="Mã ngành"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center" />
+
+                    <TextBox Grid.Column="1"
+                            Margin="10"
+                            FontSize="15"
+                            FontWeight ="Bold"
+                            x:Name="txtTenNganh"
+                            Width="200"
+                            Foreground="Black"
+                            materialDesign:HintAssist.Hint="Tên ngành"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center" />
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      Background="Transparent">
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" 
+                              HorizontalAlignment="Right"
+                              Margin="0 0 10 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderThickness="0"
+                                    Background="YellowGreen"
+                                    Grid.ColumnSpan="2"
+                                    CornerRadius="15"
+                                    Height="40">
+                        </Border>
+
+                        <Button Grid.Column="0"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"
+                                    FontSize="15"
+                                    Width="40"
+                                    Height="40"
+                                    Content="+"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    x:Name="btnFlag"
+                                    Click="btnFlag_Click"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center" Margin="0,10"/>
+
+                        <Button   Grid.Column="1"
+                                      Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                      Width="80"
+                                      Content="Thêm"
+                                      x:Name="btnThemNganhHoc"
+                                      Click="btnThemNganhHoc_Click"
+                                      IsEnabled="False"
+                                      Foreground="Black"
+                                      FontWeight="Bold"
+                                      Background="Transparent"
+                                      BorderBrush="Transparent"/>
+                        <Line X1="40" Y1="10"
+                                  X2="40" Y2="50"
+                                  Stroke="White"
+                                  StrokeThickness="1"/>
+                    </Grid>
+
+                    <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Sửa"
+                                x:Name="btnCapNhatNganhHoc"
+                                Click="btnCapNhatNganhHoc_Click"
+                                Margin="10"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+
+                    <Button Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Xóa"
+                                x:Name="btnXoaNganhHoc"
+                                Click="btnXoaNganhHoc_Click"
+                                Margin="10"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+                </Grid>
+
+                <Grid Grid.Row="3"
+                      VerticalAlignment="Stretch">
+                    <GroupBox
+                              Header="Danh sách ngành thi"
+                              Margin="15"
+                              FontWeight="Bold"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                              Background="Transparent"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgNganhHoc"
+                                  HorizontalAlignment="Stretch"
+                                  Background="White"
+                                  FontWeight="Bold"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="False"
+                                  SelectionMode="Extended"
+                                  Foreground="Black"
+                                  SelectedItem="{Binding SelectedNganhHoc}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã ngành" Binding="{Binding Path=Manganh}"/>
+                                <DataGridTextColumn Header="Tên ngành" Binding="{Binding Path=Tennganh}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

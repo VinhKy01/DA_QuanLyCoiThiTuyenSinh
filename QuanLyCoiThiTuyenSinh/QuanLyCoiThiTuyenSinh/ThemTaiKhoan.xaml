@@ -1,0 +1,123 @@
+﻿<Window x:Class="QuanLyCoiThiTuyenSinh.ThemTaiKhoan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="ThemTaiKhoan" Height="600" Width="500">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border CornerRadius="20" Grid.RowSpan="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FE222222" Offset="0.2"></GradientStop>
+                        <GradientStop Color="#FE224222" Offset="0.5"></GradientStop>
+                        <GradientStop Color="#FE225222" Offset="1"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+
+            <TextBlock Text="TẠO TÀI KHOẢN"
+                           Grid.Row="0"
+                           FontWeight="Black"
+                           FontSize="40"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+            <TextBox Grid.Row="1"
+                        FontSize="24"
+                     x:Name="txtTenDangNhap"
+                        FontWeight ="Bold"
+                        Foreground="White"
+                        Width="400"
+                        HorizontalAlignment="Center"
+                        materialDesign:HintAssist.Foreground="White"
+                        materialDesign:TextFieldAssist.UnderlineBrush="White"
+                        materialDesign:HintAssist.Hint="Tên đăng nhập"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Center" />
+
+            <PasswordBox  x:Name="txtMatKhau"
+                        Width="400"
+                         FontSize="24"
+                        Grid.Row="2"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        materialDesign:HintAssist.Hint="Mật khẩu"
+                        materialDesign:HintAssist.Foreground="White"
+                        materialDesign:TextFieldAssist.UnderlineBrush="White"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+            <PasswordBox  x:Name="txtXacNhanMK"
+                        Width="400"
+                        FontSize="24"
+                        Grid.Row="3"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="White"
+                        materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
+                        materialDesign:HintAssist.Foreground="Black"
+                        materialDesign:TextFieldAssist.UnderlineBrush="Black"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+            <Grid Grid.Row="4"
+                      Width="400">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                            Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                            Width="180"
+                            Height="50"
+                            Content="Tạo"
+                            Margin="10"
+                            x:Name="btnTaoTaiKhoan"
+                            Click="btnTaoTaiKhoan_Click"
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Background="ForestGreen"
+                            BorderThickness="0" />
+
+                <Button Grid.Column="1"
+                            Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                            Width="180"
+                            Height="50"
+                            Content="Hủy"
+                            Margin="10"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            x:Name="btnHuy"
+                            Click="btnHuy_Click"
+                            Background="OrangeRed"
+                            materialDesign:ButtonAssist.CornerRadius="20"
+                            BorderThickness="0" />
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

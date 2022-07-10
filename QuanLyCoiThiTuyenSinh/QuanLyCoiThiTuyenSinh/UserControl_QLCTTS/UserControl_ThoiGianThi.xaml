@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_QLCTTS.UserControl_ThoiGianThi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid Background="White">
+        <materialDesign:TransitioningContent x:Name="tranisitionContenSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                            Margin="10"
+                            FontSize="15"
+                            FontWeight ="Bold"
+                             HorizontalAlignment="Center"
+                            Width="200"
+                            x:Name="txtMaTG"
+                            IsEnabled="False"
+                            Foreground="Black"
+                            materialDesign:HintAssist.Hint="Mã thời gian thi"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center" />
+                    <TextBox Grid.Column="1"
+                            Margin="10"
+                            FontSize="15"
+                            FontWeight ="Bold"
+                             HorizontalAlignment="Center"
+                            Width="200"
+                            x:Name="txtTG"
+                            Foreground="Black"
+                            materialDesign:HintAssist.Hint="Thời gian"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" 
+                              HorizontalAlignment="Right"
+                              Margin="0 0 10 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderThickness="0"
+                                    Background="YellowGreen"
+                                    Grid.ColumnSpan="2"
+                                    CornerRadius="15"
+                                    Height="40">
+                        </Border>
+
+                        <Button Grid.Column="0"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"
+                                    FontSize="15"
+                                    Width="40"
+                                    Height="40"
+                                    Content="+"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    x:Name="btnFlag"
+                                    Click="btnFlag_Click"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="80"
+                                Content="Thêm"
+                                x:Name="btnThemThoiGian"
+                                Click="btnThemThoiGian_Click"
+                                IsEnabled="False"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Background="Transparent"
+                                BorderBrush="Transparent"/>
+                        <Line X1="40" Y1="10"
+                                  X2="40" Y2="50"
+                                  Stroke="Black"
+                                  StrokeThickness="1"/>
+                    </Grid>
+
+                    <Button Grid.Column="1"
+                            Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                            Width="120"
+                            Height="40"
+                            Content="Sửa"
+                            x:Name="btnCapNhatThoiGian"
+                            Click="btnCapNhatThoiGian_Click"
+                            Margin="10"
+                            Foreground="Black"
+                            FontWeight="Bold"
+                            Background="YellowGreen"
+                            materialDesign:ButtonAssist.CornerRadius="15"
+                            BorderThickness="0" />
+
+                    <Button Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Xóa"
+                                x:Name="btnXoaThoiGian"
+                                Click="btnXoaThoiGian_Click"
+                                Margin="10"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Background="YellowGreen"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      VerticalAlignment="Stretch">
+                    <GroupBox Header="Danh sách thời gian thi"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                              Background="Transparent"
+                              Margin="15"
+                              FontWeight="Bold"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgThoiGian"
+                                  HorizontalAlignment="Stretch"
+                                  Background="White"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  FontWeight="Bold"
+                                  SelectionMode="Extended"
+                                  Foreground="Black"
+                                  SelectedItem="{Binding SelectedThoiGian}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã thời gian" Binding="{Binding Path=Matg}"/>
+                                <DataGridTextColumn Header="Thời gian" Binding="{Binding Path=Thoigian}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

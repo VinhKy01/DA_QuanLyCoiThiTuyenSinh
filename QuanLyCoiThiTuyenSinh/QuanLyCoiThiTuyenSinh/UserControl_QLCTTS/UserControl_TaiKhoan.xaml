@@ -1,0 +1,187 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_QLCTTS.UserControl_TaiKhoan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="500" d:DesignWidth="800">
+
+
+    <Grid Background="White">
+        <Border CornerRadius="35">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="White" Offset="0.2"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <materialDesign:TransitioningContent x:Name="tranisitionContenSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <materialDesign:Card Grid.Row="0"
+                                     Background="Transparent">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                            <TextBox Grid.Column="0"
+                                x:Name="txtTenDangNhap"
+                                Margin="10"
+                                Width="150"
+                                FontSize="12"
+                                FontWeight ="Bold"
+                                Foreground="Black"
+                                IsEnabled="False"
+                                materialDesign:HintAssist.Foreground="ForestGreen"
+                                materialDesign:TextFieldAssist.UnderlineBrush="ForestGreen"
+                                materialDesign:HintAssist.Hint="Tên đăng nhập"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center" />
+                        <TextBox Grid.Column="1"
+                                x:Name="txtMatKhau"
+                                 IsEnabled="False"
+                                Margin="10"
+                                Width="150"
+                                FontSize="12"
+                                FontWeight ="Bold"
+                                Foreground="Black"
+                                materialDesign:HintAssist.Foreground="ForestGreen"
+                                materialDesign:TextFieldAssist.UnderlineBrush="ForestGreen"
+                                materialDesign:HintAssist.Hint="Mật khẩu"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center" />
+                        <TextBox Grid.Column="2"
+                                x:Name="txtTenNguoiDung"
+                                Margin="10"
+                                Width="150"
+                                FontSize="12"
+                                IsEnabled="False"
+                                FontWeight ="Bold"
+                                Foreground="Black"
+                                materialDesign:HintAssist.Foreground="ForestGreen"
+                                materialDesign:TextFieldAssist.UnderlineBrush="ForestGreen"
+                                materialDesign:HintAssist.HelperTextFontSize="100"
+                                materialDesign:HintAssist.Hint="Tên người dùng"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center" />
+                        <ComboBox Grid.Column="3"
+                                x:Name="cbbLoaiTK"
+                                IsEnabled="False"
+                                Margin="10"
+                                Width="150"
+                                FontSize="12"
+                                FontWeight ="Bold"
+                                Foreground="Black"
+                                materialDesign:HintAssist.Foreground="ForestGreen"
+                                materialDesign:TextFieldAssist.UnderlineBrush="ForestGreen"
+                                materialDesign:HintAssist.Hint="Loại tài khoản"
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBoxItem Content="1"/>
+                            <ComboBoxItem Content="2" />
+                        </ComboBox>
+                    </Grid>
+                    
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Row="1"
+                                     HorizontalAlignment="Center"
+                                      Background="Transparent">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="140"
+                                Height="40"
+                                Content="Đặt lại mật khẩu"
+                                Margin="10"
+                                x:Name="btnResetMK"
+                                Click="btnResetMK_Click"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+
+                        <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="140"
+                                Height="40"
+                                Content="Phân quyền"
+                                Margin="10"
+                                x:Name="btnPhanQuyenTK"
+                                Click="btnPhanQuyenTK_Click"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="140"
+                                Height="40"
+                                Content="Xóa"
+                                Margin="10"
+                                x:Name="btnXoaTaiKhoan"
+                                Click="btnXoaTaiKhoan_Click"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0"/>
+                    </Grid>
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Row="2"
+                                     Background="Transparent"
+                                     VerticalAlignment="Stretch">
+                    <GroupBox 
+                              Header="Danh sách tài khoản"
+                              FontWeight="Bold"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                              Background="Transparent"
+                              Margin="15"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgTaiKhoan"
+                                  HorizontalAlignment="Stretch"
+                                  Foreground="Black"
+                                  Background="White"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  FontWeight="Bold"
+                                  SelectionMode="Extended"
+                                  SelectedItem="{Binding SelectedTaiKhoan}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tên đăng nhập" Binding="{Binding Path=Taikhoan}"/>
+                                <DataGridTextColumn Header="Mật khẩu" Binding="{Binding Path=Matkhau}"/>
+                                <DataGridTextColumn Header="Loại tài khoản" Binding="{Binding Path=Loaitaikhoan}"/>
+                                <DataGridTextColumn Header="Tên người dùng" Binding="{Binding Path=Manguoidung}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </GroupBox>
+                </materialDesign:Card>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

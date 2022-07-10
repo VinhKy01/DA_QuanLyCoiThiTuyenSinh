@@ -1,0 +1,283 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_QLCTTS.UserControl_MonThi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid Background="White">
+        <materialDesign:TransitioningContent x:Name="tranisitionContenSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <materialDesign:Card Grid.Row="0"
+                                     BorderThickness="0"
+                                     BorderBrush="Black">
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left"
+                                    Grid.Column="0"
+                                    Margin="10">
+                            <materialDesign:Card Width="200"
+                                             Height="40"
+                                             Background="#FE222222"
+                                             UniformCornerRadius="15">
+                                <TextBox  x:Name="txtTimTenMon"
+                                      TextChanged="txtTimTenMon_TextChanged"
+                                      materialDesign:HintAssist.Hint="Tìm tên"
+                                      materialDesign:HintAssist.HelperTextFontSize="15" 
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Foreground="White"
+                                      Margin="5 0 0 0"
+                                      Background="Transparent"
+                                      materialDesign:HintAssist.Foreground="#FE222222"
+                                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                      Width="160">
+                                </TextBox>
+                            </materialDesign:Card>
+                            <materialDesign:PackIcon Kind="Magnify" 
+                                                 Foreground="White"
+                                                 Margin="-28 10 0 0"
+                                                 Width="20"
+                                                 Height="20"/>
+                        </StackPanel>
+
+                        <ComboBox HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Width="150"
+                                  FontWeight="Black"
+                                  Grid.Column="2"
+                                  Margin="15 0 0 0"
+                                  x:Name="cbbTimNganhHoc"
+                                  SelectionChanged="cbbTimNganhHoc_SelectionChanged"
+                                  materialDesign:HintAssist.Hint="Tìm kiếm theo ngành"
+                                  ItemsSource="{Binding LongListToTestComboVirtualization}"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </Grid>
+
+                </materialDesign:Card>
+
+                <Grid Grid.Row="1"
+                      Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Ma mon hoc-->
+                        <TextBox Grid.Column="0"
+                                    Width="200"
+                                    x:Name="txtMaMonHoc"
+                                    FontWeight="Bold"
+                                    Foreground="Black"
+                                    IsEnabled="False"
+                                    materialDesign:HintAssist.Hint="Mã môn"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    VerticalAlignment="Center" />
+
+                        <!--Ngay thi-->
+                        <DatePicker Grid.Column="1"
+                                      Width="200"
+                                      x:Name="dtpkNgayThi"
+                                      FontWeight="Bold"
+                                      Foreground="Black"
+                                      materialDesign:HintAssist.Hint="Ngày thi"
+                                      materialDesign:TextFieldAssist.HasClearButton="True"
+                                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                        <!--Thoi gian-->
+                        <ComboBox Grid.Column="2"
+                                      materialDesign:HintAssist.Hint="Thời gian thi"
+                                      FontWeight="Bold"
+                                      x:Name="cbbThoiGianThi"
+                                      Width="200"
+                                      HorizontalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                              Margin="0 0 0 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Tên môn-->
+                        <TextBox Grid.Column="0"
+                                    Width="200"
+                                    x:Name="txtTenMonHoc"
+                                    FontWeight="Bold"
+                                    Foreground="Black"
+                                    materialDesign:HintAssist.Hint="Tên môn"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    VerticalAlignment="Center"/>
+
+                        <!--Buổi thi-->
+                        <ComboBox Grid.Column="1"
+                                      materialDesign:HintAssist.Hint="Buổi thi"
+                                      FontWeight="Bold"
+                                      x:Name="cbbBuoiThi"
+                                      Width="200"
+                                      HorizontalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+
+                        <ComboBox Grid.Column="2"
+                                      materialDesign:HintAssist.Hint="Tên ngành"
+                                      FontWeight="Bold"
+                                      x:Name="cbbNganhHoc"
+                                      Width="200"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" 
+                              HorizontalAlignment="Right"
+                              Margin="0 0 10 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderThickness="0"
+                                    Background="YellowGreen"
+                                    Grid.ColumnSpan="2"
+                                    CornerRadius="15"
+                                    Height="40">
+                        </Border>
+
+                        <Button Grid.Column="0"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"
+                                    FontSize="15"
+                                    Width="40"
+                                    Height="40"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    Content="+"
+                                    x:Name="btnFlag"
+                                    Click="btnFlag_Click"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="1"
+                                    Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                    Width="80"
+                                    Content="Thêm"
+                                    x:Name="btnThemMonHoc"
+                                    IsEnabled="False"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    Click="btnThemMonHoc_Click"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"/>
+                        <Line X1="40" Y1="10"
+                                  X2="40" Y2="50"
+                                  Stroke="Black"
+                                  StrokeThickness="1"/>
+                    </Grid>
+
+                    <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Sửa"
+                                x:Name="btnCapNhatMonHoc"
+                                Click="btnCapNhatMonHoc_Click"
+                                Margin="10"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+
+                    <Button Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Xóa"
+                                x:Name="btnXoaMonHoc"
+                                Click="btnXoaMonHoc_Click"
+                                Margin="10"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+                </Grid>
+
+                <Grid Grid.Row="3"
+                      VerticalAlignment="Stretch">
+                    <GroupBox
+                              Header="Danh sách môn thi"
+                              FontWeight="Bold"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                              Margin="15"
+                              Background="Transparent"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgMonThi"
+                                  HorizontalAlignment="Stretch"
+                                  AutoGenerateColumns="False"
+                                  Background="White"
+                                  IsReadOnly="True"
+                                  FontWeight="Bold"
+                                  SelectionMode="Extended"
+                                  SelectedItem="{Binding SelectedMonThi}"
+                                  Foreground="Black">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã môn" Binding="{Binding Path=Mamon}"/>
+                                <DataGridTextColumn Header="Tên môn" Binding="{Binding Path=Tenmon}"/>
+                                <DataGridTextColumn Header="Ngày thi" Binding="{Binding Path=Ngaythi}"/>
+                                <DataGridTextColumn Header="Buổi thi" Binding="{Binding Path=Buoithi}"/>
+                                <DataGridTextColumn Header="Thời gian" Binding="{Binding Path=Thoigian}"/>
+                                <DataGridTextColumn Header="Tên ngành" Binding="{Binding Path=Tennganh}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

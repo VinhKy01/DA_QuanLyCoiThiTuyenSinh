@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_User.UserControl_User_DiaDiemThi"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_User"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+        <materialDesign:Card Margin="10"
+                             UniformCornerRadius="15"
+                             Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <materialDesign:Card Grid.Row="0"
+                                     UniformCornerRadius="15">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                Margin="10">
+                        <materialDesign:Card Width="200"
+                                             Height="40"
+                                             Background="#FE222222"
+                                             UniformCornerRadius="15">
+                            <TextBox  x:Name="txtTimDiaChiDiemThi"
+                                      TextChanged="txtTimDiaChiDiemThi_TextChanged"
+                                      materialDesign:HintAssist.Hint="Tìm địa chỉ điểm thi"
+                                      materialDesign:HintAssist.HelperTextFontSize="15" 
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Foreground="White"
+                                      Margin="5 0 0 0"
+                                      Background="Transparent"
+                                      materialDesign:HintAssist.Foreground="#FE222222"
+                                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                      Width="160">
+                            </TextBox>
+                        </materialDesign:Card>
+                        <materialDesign:PackIcon Kind="Magnify" 
+                                                 Foreground="White"
+                                                 Margin="-28 10 0 0"
+                                                 Width="20"
+                                                 Height="20"/>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <Grid Grid.Row="1">
+                    <GroupBox
+                              Header="Danh sách địa điểm thi"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="Dark"
+                              Margin="15"
+                              FontWeight="Bold"
+                              BorderThickness="0"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgDiemThiSo"
+                                  HorizontalAlignment="Stretch"
+                                  Background="White"
+                                  IsReadOnly="True"
+                                  AutoGenerateColumns="False"
+                                  SelectionMode="Extended"
+                                  Foreground="Black"
+                                  FontWeight="Bold"
+                                  SelectedItem="{Binding SelectedDiaDiemThi}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Điểm thi số" Binding="{Binding Path=Diemthiso}"/>
+                                <DataGridTextColumn Header="Địa chỉ điểm thi" Binding="{Binding Path=Diachidiemthi}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+    </materialDesign:TransitioningContent>
+</UserControl>

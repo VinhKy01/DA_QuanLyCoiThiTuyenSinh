@@ -1,0 +1,455 @@
+﻿<UserControl x:Class="QuanLyCoiThiTuyenSinh.UserControl_QLCTTS.fHocSinh"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyCoiThiTuyenSinh.UserControl_QLCTTS"
+             mc:Ignorable="d"
+        xmlns:gif ="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="600" d:DesignWidth="1100">
+
+    <Grid Background="White">
+        <Border Grid.RowSpan="2"
+                CornerRadius="35">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="White" Offset="0.2"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <materialDesign:TransitioningContent x:Name="tranisitionContenSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromBottom, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <materialDesign:Card Grid.Row="0"
+                                     BorderBrush="Black"
+                                     BorderThickness="0">
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
+                                    Margin="10">
+                            <materialDesign:Card Width="200"
+                                             Height="40"
+                                             Background="#FE222222"
+                                             UniformCornerRadius="15">
+                                <TextBox  x:Name="txtFindName"
+                                          TextChanged="txtFindName_TextChanged"
+                                      materialDesign:HintAssist.Hint="Tìm tên"
+                                      materialDesign:HintAssist.HelperTextFontSize="15" 
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Foreground="White"
+                                      Margin="5 0 0 0"
+                                      Background="Transparent"
+                                      materialDesign:HintAssist.Foreground="#FE222222"
+                                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                      Width="160">
+                                </TextBox>
+                            </materialDesign:Card>
+
+                            <materialDesign:PackIcon Kind="Magnify" 
+                                                 Foreground="White"
+                                                 Margin="-28 10 0 0"
+                                                 Width="20"
+                                                 Height="20"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center">
+                            <materialDesign:Card Width="200"
+                                             Height="40"
+                                             Background="#FE222222"
+                                             UniformCornerRadius="15">
+                                <TextBox  x:Name="txtFindMaPhong"
+                                          TextChanged="txtFindMaPhong_TextChanged"
+                                          materialDesign:HintAssist.Hint="Tìm mã phòng"
+                                          materialDesign:HintAssist.HelperTextFontSize="15" 
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Foreground="White"
+                                          Margin="5 0 0 0"
+                                          Background="Transparent"
+                                          materialDesign:HintAssist.Foreground="#FE222222"
+                                          materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                                          Width="160">
+                                </TextBox>
+                            </materialDesign:Card>
+
+                            <materialDesign:PackIcon Kind="Magnify" 
+                                                 Foreground="White"
+                                                 Margin="-28 20 0 0"
+                                                 Width="20"
+                                                 Height="20"/>
+                        </StackPanel>
+
+                        <ComboBox HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Width="150"
+                                  FontWeight="Black"
+                                  Grid.Column="2"
+                                  Margin="15 0 0 0"
+                                  x:Name="cbbTimNganhHoc"
+                                  SelectionChanged="cbbTimNganhHoc_SelectionChanged"
+                                  materialDesign:HintAssist.Hint="Tìm kiếm theo ngành"
+                                  ItemsSource="{Binding LongListToTestComboVirtualization}"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+
+                    </Grid>
+                </materialDesign:Card>
+
+                <Grid Grid.Row="1"
+                      Background="White"
+                      Height="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Só báo danh thi sinh-->
+                        <TextBox Grid.Row="0"
+                                FontWeight ="Bold"
+                                Foreground="Black"
+                                Width="200"
+                                HorizontalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Số báo danh"
+                                 x:Name="txtSBD"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center" />
+
+                        <!--Họ và tên thí sinh-->
+                        <TextBox Grid.Row="1"
+                                FontWeight ="Bold"
+                                Width="200"
+                                Foreground="Black"
+                                materialDesign:HintAssist.Hint="Họ tên"
+                                x:Name="txtHoTen"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center" />
+
+                        <!--Ngày Sinh-->
+                        <DatePicker Grid.Row="2"
+                                    Width="200"
+                                    FontWeight ="Bold"
+                                    Foreground="Black"
+                                    Margin="0 0 0 15"
+                                    materialDesign:HintAssist.Hint="Ngày sinh"
+                                    x:Name="dtpkNgaySinh"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Giới tính thi sinh-->
+                        <Grid Grid.Row="0" HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Width="200"
+                                                 Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                    Text="Giới Tính"
+                                    Foreground="Black"
+                                    FontWeight ="Bold"
+                                    Height="15"/>
+                            <RadioButton Background="YellowGreen" IsChecked="True" Grid.Column="1" Foreground="Black" FontWeight ="Bold" x:Name="rbNam" Content="Nam"/>
+                            <RadioButton Background="YellowGreen" Grid.Column="2" Foreground="Black" FontWeight ="Bold" x:Name="rbNu" Content="Nữ"/>
+                        </Grid>
+
+                        <!--Hộ Khẩu của thí sinh-->
+                        <TextBox Grid.Row="1"
+                                    FontWeight ="Bold"
+                                    Width="200"
+                                    Foreground="Black"
+                                    HorizontalAlignment="Center"
+                                    materialDesign:HintAssist.Hint="Hộ khẩu"
+                                    x:Name="txtHoKhau"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    VerticalAlignment="Center" />
+
+                        <!--Đối tượng-->
+                        <ComboBox Grid.Row="2"
+                                      materialDesign:HintAssist.Hint="Đối tượng"
+                                      FontWeight="Bold"
+                                      x:Name="cbbDoiTuong"
+                                      Width="200"
+                                      Margin="0 0 0 15"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Mã ngành-->
+                        <ComboBox Grid.Row="0"
+                                      materialDesign:HintAssist.Hint="Ngành"
+                                      FontWeight="Bold"
+                                      x:Name="cbbNganhHoc"
+                                      Width="200"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+
+                        <!--Khu vực-->
+                        <ComboBox Grid.Row="1"
+                                      materialDesign:HintAssist.Hint="Khu vực"
+                                      FontWeight="Bold"
+                                      x:Name="cbbKhuVuc"
+                                      Width="200"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+
+                        <!--Mã phòng-->
+                        <ComboBox Grid.Row="2"
+                                      materialDesign:HintAssist.Hint="Mã phòng"
+                                      FontWeight="Bold"
+                                      x:Name="cbbPhongHoc"
+                                      Width="200"
+                                      Margin="0 0 0 15"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      materialDesign:HintAssist.FontFamily="Verdana"
+                                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        </ComboBox>
+                    </Grid>
+
+                    <Grid Grid.Column="3"
+                          Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Header="Ảnh"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                              Background="Transparent"
+                              BorderThickness="10"
+                              Width="180">
+                            <Image 
+                                Stretch="Fill"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Margin="0 -10 0 0"
+                               x:Name="img"/>
+                        </GroupBox>
+                            <Button Width="80"
+                                Margin="5"
+                                x:Name="btnOpenfile"
+                                BorderThickness="0"
+                                Foreground="White"
+                                Background="YellowGreen"
+                                Click="btnOpenfile_Click"
+                                Grid.Row="1"
+                                FontSize="10"
+                                Height="25"
+                                Content="Chọn ảnh"
+                                HorizontalAlignment="Center"/>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      Background="White">
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Grid Grid.Column="0" 
+                              HorizontalAlignment="Right"
+                              Margin="0 0 10 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="80"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border BorderThickness="0"
+                                    Background="YellowGreen"
+                                    Grid.ColumnSpan="2"
+                                    CornerRadius="15"
+                                    Height="40">
+                            </Border>
+
+                            <Button Grid.Column="0"
+                                    Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"
+                                    FontSize="15"
+                                    Width="40"
+                                    Height="40"
+                                    Content="+"
+                                    x:Name="btnFlag"
+                                    Click="btnFlag_Click"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+
+                            <Button Grid.Column="1"
+                                    Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                    Width="80"
+                                    Content="Thêm"
+                                    x:Name="btnThemThiSinh"
+                                    Click="btnThemThiSinh_Click"
+                                    IsEnabled="False"
+                                    Background="Transparent"
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    BorderBrush="Transparent"/>
+                            <Line X1="40" Y1="10"
+                                  X2="40" Y2="50"
+                                  Stroke="White"
+                                  StrokeThickness="1"/>
+                        </Grid>
+
+                        <Button Grid.Column="1"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Sửa"
+                                x:Name="btnCapNhatThiSinh"
+                                Click="btnCapNhatThiSinh_Click"
+                                Margin="10"
+                                Background="YellowGreen"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+
+                        <Button Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Width="120"
+                                Height="40"
+                                Content="Xóa"
+                                x:Name="btnXoaThiSinh"
+                                Click="btnXoaThiSinh_Click"
+                                Margin="10"
+                                Foreground="Black"
+                                FontWeight="Bold"
+                                Background="YellowGreen"
+                                materialDesign:ButtonAssist.CornerRadius="15"
+                                BorderThickness="0" />
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="3"
+                        VerticalAlignment="Stretch"
+                        Background="Transparent">
+                    <Border
+                        Background="{DynamicResource MaterialDesignBackground}">
+                        <GroupBox
+                                Header="Danh sách thí sinh"
+                                Style="{DynamicResource MaterialDesignGroupBox}"
+                                materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+                                Margin="15"
+                                FontWeight="Bold"
+                                UseLayoutRounding="True">
+                            <DataGrid x:Name="dtgThiSinh"
+                                  HorizontalAlignment="Stretch"
+                                  Foreground="Black"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Extended"
+                                  FontWeight="Bold"
+                                  SelectedItem="{Binding SelectedThiSinh}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Số báo danh" Binding="{Binding Path=Sbd}"/>
+                                    <DataGridTextColumn Header="Họ tên" Binding="{Binding Path=Hoten}"/>
+                                    <DataGridTextColumn Header="Ngày sinh" Binding="{Binding Path=Ngaysinh}"/>
+                                    <DataGridTextColumn Header="Giới tính" Binding="{Binding Path=Gioitinh}"/>
+                                    <DataGridTextColumn Header="Hộ khẩu" Binding="{Binding Path=Hokhau}"/>
+                                    <DataGridTextColumn Header="Đối tượng" Binding="{Binding Path=Doituong}"/>
+                                    <DataGridTextColumn Header="Ngành" Binding="{Binding Path=Manganh}"/>
+                                    <DataGridTextColumn Header="Khu vực" Binding="{Binding Path=Khuvuc}"/>
+                                    <DataGridTextColumn Header="Mã phòng" Binding="{Binding Path=Maphong}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </GroupBox>
+                    </Border>
+                    <!--<GroupBox Header="DANH SÁCH ĐƠN VỊ"
+                              Style="{DynamicResource MaterialDesignGroupBox}"
+                              materialDesign:ColorZoneAssist.Mode="Dark"
+                              Background="Transparent"
+                              HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dtgThiSinh"
+                                  HorizontalAlignment="Stretch"
+                                  Background="White"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Extended"
+                                  Foreground="Black"
+                                  SelectedItem="{Binding SelectedThiSinh}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Số báo danh" Binding="{Binding Path=Sbd}"/>
+                                <DataGridTextColumn Header="Họ tên" Binding="{Binding Path=Hoten}"/>
+                                <DataGridTextColumn Header="Ngày sinh" Binding="{Binding Path=Ngaysinh}"/>
+                                <DataGridTextColumn Header="Giới tính" Binding="{Binding Path=Gioitinh}"/>
+                                <DataGridTextColumn Header="Hộ khẩu" Binding="{Binding Path=Hokhau}"/>
+                                <DataGridTextColumn Header="Đối tượng" Binding="{Binding Path=Doituong}"/>
+                                <DataGridTextColumn Header="Ngành" Binding="{Binding Path=Manganh}"/>
+                                <DataGridTextColumn Header="Khu vực" Binding="{Binding Path=Khuvuc}"/>
+                                <DataGridTextColumn Header="Mã phòng" Binding="{Binding Path=Maphong}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>-->
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>
+    
+    
